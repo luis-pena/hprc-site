@@ -1,5 +1,5 @@
 import formatString from "@/app/functions/formatString";
-import { getArticles } from "@/app/functions/getArticles";
+import { getEvents } from "@/app/functions/getEvents";
 import PostNavigation from "@/components/PostNavigation";
 import SocialSharing from "@/components/SocialSharing";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export async function generateMetadata({
 }: {
   params: { author: string };
 }) {
-  const authors: AuthorData[] = await getArticles();
+  const authors: AuthorData[] = await getEvents();
 
   const decodedAuthor = decodeURIComponent(params.author);
 
@@ -57,7 +57,7 @@ export default async function AuthorDetails({
   params: { author: string };
 }) {
   try {
-    const authors: AuthorData[] = await getArticles();
+    const authors: AuthorData[] = await getEvents();
 
     const decodedAuthor = decodeURIComponent(params.author);
 
@@ -131,7 +131,7 @@ function AuthorArticles({ articles }: { articles: ArticleData[] }) {
           className="flex items-center gap-2 md:gap-12 p-8 border border-black"
           key={index}
         >
-          <Link href={`/magazine/${article.slug}`}>
+          <Link href={`/events/${article.slug}`}>
             <img
               className="h-[9.375rem] w-[9.375rem] hover:scale-105 transition"
               src={article.img}
@@ -140,7 +140,7 @@ function AuthorArticles({ articles }: { articles: ArticleData[] }) {
           </Link>
           <div>
             <p className="heading3-title pb-4">
-              <Link href={`/magazine/${article.slug}`}>{article.title}</Link>
+              <Link href={`/events/${article.slug}`}>{article.title}</Link>
             </p>
             <div className="flex gap-8">
               <span className="flex">

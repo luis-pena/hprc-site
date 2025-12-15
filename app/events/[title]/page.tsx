@@ -1,4 +1,4 @@
-import { ArticleType, getArticles } from "@/app/functions/getArticles";
+import { ArticleType, getEvents } from "@/app/functions/getEvents";
 import PostNavigation from "@/components/PostNavigation";
 import SocialSharing from "@/components/SocialSharing";
 import Subheading from "@/components/Subheading";
@@ -9,22 +9,23 @@ export async function generateMetadata({
 }: {
   params: { title: string };
 }) {
-  const articles: ArticleType[] = await getArticles();
+  const events: ArticleType[] = await getEvents();
+  const { title } = await params;
 
-  const articleData = articles.find((article) =>
-    article.articles.find((articleItem) => articleItem.slug === params.title)
+  const eventData = events.find((event) =>
+    event.events.find((eventItem) => eventItem.slug === title)
   );
 
-  if (!articleData) {
-    return <p>Article not found</p>;
+  if (!eventData) {
+    return <p>Event not found</p>;
   }
 
-  const matchingArticle = articleData.articles.find(
-    (articleItem) => articleItem.slug === params.title
+  const matchingEvent = eventData.events.find(
+    (eventItem) => eventItem.slug === title
   );
 
   return {
-    title: `${matchingArticle?.title} | Fyrre Magazine`,
+    title: `${matchingEvent?.title} | Fyrre Magazine`,
   };
 }
 
@@ -34,22 +35,22 @@ export default async function ArticleDetails({
   params: { title: string };
 }) {
   try {
-    const articles: ArticleType[] = await getArticles();
-
-    const articleData = articles.find((article) =>
-      article.articles.find((articleItem) => articleItem.slug === params.title)
+    const events: ArticleType[] = await getEvents();
+    const { title } = await params;
+    const eventData = events.find((event) =>
+      event.events.find((eventItem) => eventItem.slug === title)
     );
 
-    if (!articleData) {
-      return <p>Article not found</p>;
+    if (!eventData) {
+      return <p>Event not found</p>;
     }
 
-    const matchingArticle = articleData.articles.find(
-      (articleItem) => articleItem.slug === params.title
+    const matchingEvent = eventData.events.find(
+      (eventItem) => eventItem.slug === title
     );
 
-    const latestArticles = articles
-      .flatMap((articleData) => articleData.articles)
+    const latestArticles = events
+      .flatMap((articleData) => articleData.events)
       .sort((a, b) => {
         const dateA = new Date(a.date).getTime();
         const dateB = new Date(b.date).getTime();
@@ -57,48 +58,43 @@ export default async function ArticleDetails({
       })
       .slice(0, 3);
 
-    if (!matchingArticle) {
+    if (!matchingEvent) {
       return (
         <main className="max-w-[95rem] w-full mx-auto px-4 sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2">
-          <p>Article not found</p>;
+          <p>Event not found</p>;
         </main>
       );
     }
 
     return (
       <main className="max-w-[95rem] w-full mx-auto px-4 md:pt-8 sm:pt-4 xs:pt-2 lg:pb-4 md:pb-4 sm:pb-2 xs:pb-2">
-        <PostNavigation href="/magazine">Magazine</PostNavigation>
+        <PostNavigation href="/events">Events</PostNavigation>
         <article className="grid md:grid-cols-2 gap-6 md:gap-6 pb-6 md:pb-24">
-          <h2 className="text-subtitle">{matchingArticle.title}</h2>
-          <p>{matchingArticle.description}</p>
+          <h2 className="text-subtitle">{matchingEvent.title}</h2>
+          <p>{matchingEvent.description}</p>
         </article>
         <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0 mb-8">
           <div className="flex flex-col sm:flex-row md:items-center gap-2 sm:gap-6">
             <span className="flex flex-wrap">
               <p className="font-semibold pr-2">Text</p>
-              <p>{articleData.author}</p>
+              <p>{eventData.author}</p>
             </span>
             <span className="flex flex-wrap">
               <p className="font-semibold pr-2">Date</p>
-              <time dateTime={matchingArticle.date}>
-                {matchingArticle.date}
-              </time>
+              <time dateTime={matchingEvent.date}>{matchingEvent.date}</time>
             </span>
             <span className="flex flex-wrap">
               <p className="font-semibold pr-2">Read</p>
-              <p>{matchingArticle.read}</p>
+              <p>{matchingEvent.read}</p>
             </span>
           </div>
           <span className="px-3 py-2 border border-black rounded-full w-fit">
-            <p className="uppercase">{matchingArticle.label}</p>
+            <p className="uppercase">{matchingEvent.label}</p>
           </span>
         </div>
 
         <div>
-          <img
-            src={matchingArticle.content[0].img}
-            alt={matchingArticle.imgAlt}
-          />
+          <img src={matchingEvent.content[0].img} alt={matchingEvent.imgAlt} />
         </div>
 
         <article className="flex flex-col md:flex-row gap-6 md:gap-16 max-w-[62.5rem] w-full mx-auto mt-6 md:mt-24">
@@ -107,22 +103,20 @@ export default async function ArticleDetails({
             <div className="flex gap-4 items-center">
               <img
                 className="w-[5rem] h-[5rem]"
-                src={articleData.avatar}
-                alt={articleData.imgAlt}
+                src={eventData.avatar}
+                alt={eventData.imgAlt}
               />
-              <p className="text-[2rem] font-semibold">{articleData.author}</p>
+              <p className="text-[2rem] font-semibold">{eventData.author}</p>
             </div>
 
             <div className="flex flex-col gap-4 pt-8">
               <div className="flex flex-wrap justify-between">
                 <p className="font-semibold">Date</p>
-                <time dateTime={matchingArticle.date}>
-                  {matchingArticle.date}
-                </time>
+                <time dateTime={matchingEvent.date}>{matchingEvent.date}</time>
               </div>
               <div className="flex flex-wrap justify-between">
                 <p className="font-semibold">Read</p>
-                <p>{matchingArticle.read}</p>
+                <p>{matchingEvent.read}</p>
               </div>
               <div className="flex flex-wrap justify-between">
                 <p className="flex font-semibold">Share</p>
@@ -153,26 +147,26 @@ export default async function ArticleDetails({
           </div>
           <div className="lg:w-3/4">
             <p className="text-xl font-medium">
-              {matchingArticle.content[0].summary}
+              {matchingEvent.content[0].summary}
             </p>
-            <p className="my-6">{matchingArticle.content[1].section1}</p>
+            <p className="my-6">{matchingEvent.content[1].section1}</p>
             <div className="border-t-2 border-b-2 border-black my-6 py-12">
               <p className="text-blog-quote mb-6">
-                &ldquo;{matchingArticle.content[2].quote[0]}
+                &ldquo;{matchingEvent.content[2].quote[0]}
               </p>
-              <p>{matchingArticle.content[2].quote[1]}</p>
+              <p>{matchingEvent.content[2].quote[1]}</p>
             </div>
             <p className="text-xl font-medium mb-6">
-              {matchingArticle.content[3].summary2}
+              {matchingEvent.content[3].summary2}
             </p>
-            <p>{matchingArticle.content[4].section2}</p>
+            <p>{matchingEvent.content[4].section2}</p>
           </div>
         </article>
 
         <div>
           <Subheading
             className="text-subheading"
-            url="/magazine"
+            url="/events"
             linkText="See all"
           >
             Latest Posts
@@ -197,7 +191,7 @@ export default async function ArticleDetails({
                     <p className="uppercase">{latestArticle.label}</p>
                   </span>
                 </div>
-                <Link href={`/magazine/${latestArticle.slug}`}>
+                <Link href={`/events/${latestArticle.slug}`}>
                   <img
                     className="w-full my-8"
                     src={latestArticle.img}
@@ -205,7 +199,7 @@ export default async function ArticleDetails({
                   />
                 </Link>
                 <h2 className="heading3-title mb-3">
-                  <Link href={`/magazine/${latestArticle.slug}`}>
+                  <Link href={`/events/${latestArticle.slug}`}>
                     {latestArticle.title}
                   </Link>
                 </h2>
@@ -213,7 +207,7 @@ export default async function ArticleDetails({
                 <div className="flex flex-wrap gap-4">
                   <span className="flex">
                     <p className="font-semibold pr-2">Text</p>
-                    <p>{articleData.author}</p>
+                    <p>{eventData.author}</p>
                   </span>
                   <span className="flex">
                     <p className="font-semibold pr-2">Duration</p>

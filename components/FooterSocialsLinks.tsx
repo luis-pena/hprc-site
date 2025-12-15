@@ -9,21 +9,21 @@ type SocialMediaLink = {
 
 const FooterSocialMediaLinks: SocialMediaLink[] = [
   {
-    href: "#",
+    href: "https://www.instagram.com/huntingtonparkrunclub",
     ariaLabel: "Visit our Instagram page",
     src: "/icons/ri_instagram-line-white.svg",
     alt: "Instagram logo",
   },
   {
-    href: "#",
-    ariaLabel: "Visit our Twitter page",
-    src: "/icons/ri_twitter-fill-white.svg",
-    alt: "Twitter logo",
+    href: "https://www.tiktok.com/@huntingtonparkrunclub",
+    ariaLabel: "Visit our TikTok page",
+    src: "/icons/ri_tiktok-fill-white.svg",
+    alt: "TikTok logo",
   },
   {
-    href: "#",
-    ariaLabel: "Visit our YouTube page",
-    src: "/icons/ri_youtube-fill-white.svg",
+    href: "https://www.strava.com/clubs/1244918",
+    ariaLabel: "Visit our Strava page",
+    src: "/icons/strava-fill-white.svg",
     alt: "YouTube logo",
   },
   {

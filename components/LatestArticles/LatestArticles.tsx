@@ -10,8 +10,8 @@ import Image from "next/image";
 export default function LatestArticles() {
   const { data } = useArticleContext();
 
-  if (data.length > 0 && data[0].articles.length > 0) {
-    const allArticles = data[0].articles.sort((a, b) => {
+  if (data.length > 0 && data[0].events.length > 0) {
+    const allArticles = data[0].events.sort((a, b) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
       return dateB - dateA;
@@ -27,7 +27,7 @@ export default function LatestArticles() {
           <article className="flex flex-col-reverse sm:flex-col gap-6 md:gap-12">
             <article className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
               <h2 className="text-subtitle">
-                <Link href={`/magazine/${latestArticle.slug}`}>
+                <Link href={`/events/${latestArticle.slug}`}>
                   {latestArticle.title}
                 </Link>
               </h2>
@@ -41,17 +41,17 @@ export default function LatestArticles() {
                     </span>
                     <span className="flex flex-wrap">
                       <p className="font-semibold pr-2">Date</p>
-                      <time dateTime={data[0].articles[0].date}>
-                        {data[0].articles[0].date}
+                      <time dateTime={data[0].events[0].date}>
+                        {data[0].events[0].date}
                       </time>
                     </span>
                     <span className="flex flex-wrap">
                       <p className="font-semibold pr-2">Read</p>
-                      <p>{data[0].articles[0].read}</p>
+                      <p>{data[0].events[0].read}</p>
                     </span>
                   </div>
                   <span className="px-3 py-2 border border-black rounded-full w-fit">
-                    <p className="uppercase">{data[0].articles[0].label}</p>
+                    <p className="uppercase">{data[0].events[0].label}</p>
                   </span>
                 </div>
               </article>
@@ -74,7 +74,7 @@ export default function LatestArticles() {
             {remainingArticles.map((article, index) => (
               <article key={article.title}>
                 <article className="grid md:grid-cols-[0fr_1fr] gap-6 sm:gap-12">
-                  <Link href={`magazine/${article.slug}`} className="h-60 w-60">
+                  <Link href={`events/${article.slug}`} className="h-60 w-60">
                     <Image
                       className="w-full h-full object-cover hover:scale-105 transition"
                       src={article.img}
@@ -86,7 +86,7 @@ export default function LatestArticles() {
                   <article className="flex flex-col justify-between">
                     <div className="mb-4 :md:mb-0">
                       <h3 className="heading3-title mb-3">
-                        <Link href={`/magazine/${article.slug}`}>
+                        <Link href={`/events/${article.slug}`}>
                           {article.title}
                         </Link>
                       </h3>

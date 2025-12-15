@@ -24,7 +24,7 @@ export default function LatestArticles() {
         <div className="flex flex-col-reverse sm:flex-col gap-12 py-10 max-w-[95rem] w-full mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <h2 className="text-subtitle">
-              <Link href={`/magazine/${latestArticle.slug}`}>
+              <Link href={`/events/${latestArticle.slug}`}>
                 {latestArticle.title}
               </Link>
             </h2>
@@ -65,7 +65,7 @@ export default function LatestArticles() {
             {remainingArticles.map((article, index) => (
               <div key={article.title}>
                 <div className="grid md:grid-cols-[0fr_1fr] gap-12">
-                  <Link href={`magazine/${article.slug}`} className="h-60 w-60">
+                  <Link href={`events/${article.slug}`} className="h-60 w-60">
                     <img
                       className="w-full h-full object-cover hover:scale-105 transition"
                       src={article.img}
@@ -75,7 +75,7 @@ export default function LatestArticles() {
                   <div className="flex flex-col justify-between">
                     <div className="mb-4 :md:mb-0">
                       <h3 className="heading3-title mb-3">
-                        <Link href={`/magazine/${article.slug}`}>
+                        <Link href={`/events/${article.slug}`}>
                           {article.title}
                         </Link>
                       </h3>

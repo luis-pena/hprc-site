@@ -104,7 +104,7 @@ export default function Footer() {
             <nav className="flex flex-1" aria-label="middle-footer-links">
               <ul className="text-white space-y-3">
                 <li>
-                  <Link href="/magazine">Magazine</Link>
+                  <Link href="/events">Events</Link>
                 </li>
                 <li>
                   <Link href="/podcasts">Podcast</Link>

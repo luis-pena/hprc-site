@@ -11,7 +11,7 @@ export default function Header() {
           <Link href="/" aria-label="Return to homepage">
             <img
               className="h-full w-fit"
-              src="/logos/FyrreMagazineLogo-Black.svg"
+              src="/logos/logo-black.svg"
               alt="logo"
             />
           </Link>
@@ -51,26 +51,41 @@ export default function Header() {
               ))}
               <svg
                 width="15"
-                height="1"
-                viewBox="0 0 15 1"
+                height="15"
+                viewBox="0 0 15 15"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect width="15" height="1" fill="black" />
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="15"
+                  y2="15"
+                  stroke="black"
+                  strokeWidth="1"
+                />
+                <line
+                  x1="15"
+                  y1="0"
+                  x2="0"
+                  y2="15"
+                  stroke="black"
+                  strokeWidth="1"
+                />
               </svg>
               <SocialSharing
                 links={[
                   {
-                    href: "#",
+                    href: "https://www.instagram.com/huntingtonparkrunclub",
                     ariaLabel: "Visit our Instagram page",
                     src: "/icons/ri_instagram-line.svg",
                     alt: "Instagram logo",
                   },
                   {
-                    href: "#",
-                    ariaLabel: "Visit our Twitter page",
-                    src: "/icons/ri_twitter-fill.svg",
-                    alt: "Twitter logo",
+                    href: "https://www.tiktok.com/@huntingtonparkrunclub",
+                    ariaLabel: "Visit our TikTok page",
+                    src: "/icons/ri_tiktok-fill.svg",
+                    alt: "TikTok logo",
                   },
                 ]}
               />
@@ -88,38 +103,47 @@ export default function Header() {
           ))}
           <svg
             width="15"
-            height="1"
-            viewBox="0 0 15 1"
+            height="15"
+            viewBox="0 0 15 15"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <rect width="15" height="1" fill="black" />
+            <line
+              x1="0"
+              y1="0"
+              x2="15"
+              y2="15"
+              stroke="black"
+              strokeWidth="1"
+            />
+            <line
+              x1="15"
+              y1="0"
+              x2="0"
+              y2="15"
+              stroke="black"
+              strokeWidth="1"
+            />
           </svg>
           <SocialSharing
             links={[
               {
-                href: "#",
+                href: "https://www.instagram.com/huntingtonparkrunclub",
                 ariaLabel: "Visit our Instagram page",
                 src: "/icons/ri_instagram-line.svg",
                 alt: "Instagram logo",
               },
               {
-                href: "#",
-                ariaLabel: "Visit our Twitter page",
-                src: "/icons/ri_twitter-fill.svg",
-                alt: "Twitter logo",
+                href: "https://www.tiktok.com/@huntingtonparkrunclub",
+                ariaLabel: "Visit our TikTok page",
+                src: "/icons/ri_tiktok-fill.svg",
+                alt: "TikTok logo",
               },
               {
-                href: "#",
-                ariaLabel: "Visit our YouTube page",
-                src: "/icons/ri_youtube-fill.svg",
+                href: "https://www.strava.com/clubs/1244918",
+                ariaLabel: "Visit our Strava page",
+                src: "/icons/strava-fill.svg",
                 alt: "YouTube logo",
-              },
-              {
-                href: "#",
-                ariaLabel: "Visit our RSS feed",
-                src: "/icons/ri_rss-fill.svg",
-                alt: "RSS feed logo",
               },
             ]}
           />

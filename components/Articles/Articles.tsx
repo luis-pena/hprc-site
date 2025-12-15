@@ -11,19 +11,17 @@ export default function Articles() {
 
   const labels: string[] = [
     "All",
-    ...new Set(
-      data.flatMap((article) => article.articles.map((item) => item.label))
-    ),
+    ...new Set(data.flatMap((event) => event.events.map((item) => item.label))),
   ];
 
-  const filteredArticles = data.flatMap((article) =>
-    article.articles
+  const filteredArticles = data.flatMap((event) =>
+    event.events
       .filter((item) =>
         selectedLabel === "All" ? true : selectedLabel === item.label
       )
       .map((item) => ({
         ...item,
-        author: article.author,
+        author: event.author,
       }))
   );
 
@@ -58,7 +56,7 @@ export default function Articles() {
                 <p className="uppercase">{articleData.label}</p>
               </span>
             </div>
-            <Link href={`magazine/${articleData.slug}`}>
+            <Link href={`events/${articleData.slug}`}>
               <img
                 className="w-full my-8 hover:scale-105 transition"
                 src={articleData.img}
@@ -66,7 +64,7 @@ export default function Articles() {
               />
             </Link>
             <h2 className="heading3-title mb-3">
-              <Link href={`/magazine/${articleData.slug}`}>
+              <Link href={`/events/${articleData.slug}`}>
                 {articleData.title}
               </Link>
             </h2>

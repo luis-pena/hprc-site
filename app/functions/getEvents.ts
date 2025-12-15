@@ -1,3 +1,5 @@
+import events from "@/json/events.json";
+
 export type ArticleType = {
   id: number;
   author: string;
@@ -6,7 +8,7 @@ export type ArticleType = {
   avatar: string;
   imgAlt: string;
   slug: string;
-  articles: Array<{
+  events: Array<{
     title: string;
     popular: boolean;
     popularity: number;
@@ -28,13 +30,13 @@ export type ArticleType = {
   }>;
 };
 
-export async function getArticles() {
+export async function getEvents() {
   const res = await fetch(
-    "https://raw.githubusercontent.com/asbhogal/Fyrre-Magazine/main/json/articles.json"
+    "https://raw.githubusercontent.com/luis-pena/hprc-site/refs/heads/main/json/events.json"
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch article data");
+    throw new Error("Failed to fetch event data");
   }
 
   return res.json();

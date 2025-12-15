@@ -1,9 +1,9 @@
-import { ArticleType, getArticles } from "@/app/functions/getArticles";
+import { ArticleType, getEvents } from "@/app/functions/getEvents";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Authors() {
-  const data: ArticleType[] = await getArticles();
+  const data: ArticleType[] = await getEvents();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 mb-48 max-w-[95rem] w-full mx-auto border border-black border-collapse">

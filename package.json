@@ -1,9 +1,9 @@
 {
-  "name": "fyrre-magazine",
+  "name": "hprc-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rd /s /Q .next && next dev",
+    "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -20,11 +20,11 @@
     "clsx": "^2.0.0",
     "gsap": "^3.12.2",
     "lucide-react": "^0.279.0",
-    "next": "^13.5.5",
+    "next": "^16.0.10",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.48.2",
-    "shadcn-ui": "^0.4.0",
+    "shadcn-ui": "^0.9.5",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"

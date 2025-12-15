@@ -39,7 +39,7 @@ export default function NewsTicker() {
         <span className="flex gap-2 bg-black font-semibold uppercase whitespace-nowrap">
           <p>News</p>
           <p className="block sm:hidden">+++</p>
-          <p className="hidden sm:block">Ticker +++</p>
+          <p className="hidden sm:block">+++</p>
         </span>
       </div>
       <div ref={newsText} className="flex gap-4 sliding-ticker relative">
