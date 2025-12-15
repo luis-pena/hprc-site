@@ -19,12 +19,12 @@
         "date": "Every Wednesday",
         "read": "10 mins",
         "label": "Weekly runs",
-        "img": "https://images.prismic.io/huntingtonparkrunclub/aMjZrWGNHVfTPQjN_IMG_6544.jpeg",
+        "img": "/images/**/huntingtonparkrunclub/aMjZrWGNHVfTPQjN_IMG_6544.jpeg",
         "imgAlt": "A large group of people huddled together before a run.",
         "slug": "wednesday-runs",
         "content": [
           {
-            "img": "https://images.prismic.io/huntingtonparkrunclub/aMjZrWGNHVfTPQjN_IMG_6544.jpeg",
+            "img": "/images/**/huntingtonparkrunclub/aMjZrWGNHVfTPQjN_IMG_6544.jpeg",
             "summary": "Sea virtues fearful snare passion good war prejudice. Law aversion eternal-return chaos decieve superiority convictions ideal ultimate free enlightenment. Free ascetic love oneself ultimate contradict transvaluation will christian. Dead mountains value holiest zarathustra god war pious. Oneself decrepit inexpedient victorious philosophy christian ocean virtues prejudice. Sea passion ocean victorious holiest depths. Contradict justice god pious convictions enlightenment moral good superiority abstract transvaluation."
           },
           {
